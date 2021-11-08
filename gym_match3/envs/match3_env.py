@@ -110,9 +110,11 @@ class Match3Env(gym.Env):
 
     def __swap(self, point1, point2):
         try:
-            reward = self.__game.swap(point1, point2)
+            reward_swap = self.__game.swap(point1, point2)
+            reward = [1,reward_swap]
+            print("reward swap: ",reward_swap)
         except ImmovableShapeError:
-            reward = 0
+            reward = [0,reward_swap]
         return reward
 
     def __get_board(self):
