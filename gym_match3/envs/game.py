@@ -588,7 +588,7 @@ class Game(AbstractGame):
         tmp_board.set_random_board(random_state=self.__random_state)
         super().start(tmp_board.board)
 
-    def swap(self, point: Point, point2: Point):
+    def swap(self, board: Board, point: Point, point2: Point):
         direction = point2 - point
         score = self.__move(point, direction)
         return board.get_shape(point2)
