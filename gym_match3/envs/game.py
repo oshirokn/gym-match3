@@ -232,7 +232,6 @@ class Board(AbstractBoard):
         point2_shape = self.get_shape(point2)
         self.put_shape(point2, point1_shape)
         self.put_shape(point1, point2_shape)
-        return point1_shape
 
     def put_shape(self, shape, point: Point):
         self[point] = shape
@@ -592,7 +591,7 @@ class Game(AbstractGame):
     def swap(self, point: Point, point2: Point):
         direction = point2 - point
         score = self.__move(point, direction)
-        return score
+        return self.get_shape(point2)
 
     def __move(self, point: Point, direction: Point):
         score = 0
