@@ -4,7 +4,7 @@ from gym_match3.envs.game import Board
 
 # PyCharm debugger failed with default matplotlib backend
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 
