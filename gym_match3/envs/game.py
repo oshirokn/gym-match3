@@ -593,6 +593,7 @@ class Game(AbstractGame):
         score = []
         score.append(self.__move(point, direction))
         score.append(board.get_shape(point2))
+        score.append(point2.get_coord())
         return score
 
     def __move(self, point: Point, direction: Point):
