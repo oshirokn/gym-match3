@@ -40,7 +40,7 @@ class Match3Env(gym.Env):
         self.observation_space = spaces.Box(
             low=0,
             high=self.n_shapes,
-            shape=(self.n_shapes,self.rows,self.columns),
+            shape=(self.n_shapes,self.h,self.w),
             dtype=int)
 
         # setting actions space
