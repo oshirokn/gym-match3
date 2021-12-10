@@ -81,9 +81,8 @@ class Match3Env(gym.Env):
                         actions.add((point, new_point))
                     except OutOfBoardError:
                         continue
-        print(list(actions).sort(key=lambda tup: tup[0].get_coord()))
-
-        return list(actions).sort(key=lambda tup: tup[0].get_coord())
+        print(list(actions).sort(key=lambda tup: tup[0].get_coord()[0]))
+        return list(actions)
 
     def __get_action(self, ind):
         return self.__match3_actions[ind]
