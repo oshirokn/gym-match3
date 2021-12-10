@@ -78,7 +78,7 @@ class Match3Env(gym.Env):
                     new_point = point + dir_p
                     try:
                         _ = self.__game.board[new_point]
-                        actions.add(frozenset((point, new_point)))
+                        actions.add(point, new_point)
                     except OutOfBoardError:
                         continue
         actions.sort(key=lambda tup: tup[1])  # sorts in place
