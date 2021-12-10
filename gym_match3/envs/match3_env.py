@@ -78,13 +78,13 @@ class Match3Env(gym.Env):
                     new_point = point + dir_p
                     try:
                         _ = self.__game.board[new_point]
-                        actions.add((point, new_point))
+                        actions.append((point, new_point))
                     except OutOfBoardError:
                         continue
                         
-        print(list(actions)[0][0].get_coord()[0])
-        print(list(actions).sort(key=lambda x:x[0][0].get_coord()[0]))
-        return list(actions).sort(key=lambda x:x[0][0].get_coord()[0])
+        print(actions[0][0].get_coord()[0])
+        #print(list(actions).sort(key=lambda x:x[0][0].get_coord()[0]))
+        return actions
 
     def __get_action(self, ind):
         return self.__match3_actions[ind]
