@@ -79,6 +79,7 @@ class Match3Env(gym.Env):
                     try:
                         _ = self.__game.board[new_point]
                         actions.add(frozenset((point, new_point)))
+                        print(actions)
                     except OutOfBoardError:
                         continue
         return list(actions)
