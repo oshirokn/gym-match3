@@ -81,6 +81,7 @@ class Match3Env(gym.Env):
                         actions.add(frozenset((point, new_point)))
                     except OutOfBoardError:
                         continue
+        actions.sort(key=lambda tup: tup[1])  # sorts in place
         print(list(actions))
         return list(actions)
 
