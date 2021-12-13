@@ -111,7 +111,7 @@ class Match3Env(gym.Env):
     def reset(self, *args, **kwargs):
         board = self.levels.sample()
         self.__game.start(board)
-        return self.__get_board()
+        return self.__binarize_state(self.__get_board())
 
     def __swap(self, point1, point2):
         try:
