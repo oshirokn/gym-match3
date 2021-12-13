@@ -130,8 +130,6 @@ class Match3Env(gym.Env):
         
     def __binarize_state(self, state):
         binary_mat = np.zeros((state.shape[0], state.shape[1], self.n_shapes))
-        print(state)
-        print(binary_mat)
         for gem in range(self.n_shapes):
             binary_mat[:, :, gem] = (state == gem).astype(int)
         return binary_mat
