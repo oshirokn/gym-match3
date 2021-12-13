@@ -40,7 +40,7 @@ class Match3Env(gym.Env):
         self.observation_space = spaces.Box(
             low=0,
             high=self.n_shapes,
-            shape=self.__game.board.board_size,
+            shape=self.__game.board.board_size * self.n_shapes,
             dtype=int)
 
         # setting actions space
@@ -102,7 +102,8 @@ class Match3Env(gym.Env):
         else:
             episode_over = False
             ob = self.__get_board()
-
+        
+        ob = self.__binarize_state(ob)
         return ob, reward, episode_over, {}
 
     def reset(self, *args, **kwargs):
@@ -126,3 +127,9 @@ class Match3Env(gym.Env):
         if close:
             warnings.warn("close=True isn't supported yet")
         self.renderer.render_board(self.__game.board)
+        
+    def __binarize_state(self, state):
+            binary_mat = np.zeros((state.shape[0], state.shape[1], self.n_shapes))
+            for gem in range(self.n_shapes):
+                binary_mat[:, :, gem] = (state == gem).astype(int)
+            return binary_mat
