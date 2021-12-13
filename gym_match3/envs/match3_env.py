@@ -69,7 +69,7 @@ class Match3Env(gym.Env):
 
     def __get_available_actions(self):
         """ calculate available actions for current board sizes """
-        actions = set[]
+        actions = set()
         directions = self.__get_directions(board_ndim=BOARD_NDIM)
         for point in self.__points_generator():
             for axis_dirs in directions:
