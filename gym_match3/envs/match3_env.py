@@ -7,6 +7,8 @@ from gym_match3.envs.game import OutOfBoardError, ImmovableShapeError
 from gym_match3.envs.levels import LEVELS, Match3Levels
 from gym_match3.envs.renderer import Renderer
 
+import numpy as np
+
 from itertools import product
 import warnings
 
