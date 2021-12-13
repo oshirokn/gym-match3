@@ -42,7 +42,7 @@ class Match3Env(gym.Env):
         self.observation_space = spaces.Box(
             low=0,
             high=self.n_shapes,
-            shape=self.__game.board.board_size,
+            shape=(self.h, self.w, self.n_shapes,),
             dtype=int)
 
         # setting actions space
@@ -100,16 +100,16 @@ class Match3Env(gym.Env):
         if self.__episode_counter >= self.rollout_len:
             episode_over = True
             self.__episode_counter = 0
-            ob = self.reset()
+            ob = self.__binarize_state(self.reset())
         else:
             episode_over = False
-            ob = self.__get_board()
+            ob = self.__binarize_state(self.__get_board())
         return ob, reward, episode_over, {}
 
     def reset(self, *args, **kwargs):
         board = self.levels.sample()
         self.__game.start(board)
-        return self.__get_board()
+        return  self.__get_board())
 
     def __swap(self, point1, point2):
         try:
@@ -127,3 +127,11 @@ class Match3Env(gym.Env):
         if close:
             warnings.warn("close=True isn't supported yet")
         self.renderer.render_board(self.__game.board)
+        
+    def __binarize_state(self, state):
+    binary_mat = np.zeros((state.shape[0], state.shape[1], self.n_shapes))
+    print(state)
+    print(binary_mat)
+    for gem in range(self.n_shapes):
+        binary_mat[:, :, gem] = (state == gem).astype(int)
+    return binary_mat
