@@ -69,7 +69,7 @@ class Match3Env(gym.Env):
 
     def __get_available_actions(self):
         """ calculate available actions for current board sizes """
-        actions = set()
+        actions = []
         directions = self.__get_directions(board_ndim=BOARD_NDIM)
         for point in self.__points_generator():
             for axis_dirs in directions:
@@ -78,10 +78,10 @@ class Match3Env(gym.Env):
                     new_point = point + dir_p
                     try:
                         _ = self.__game.board[new_point]
-                        actions.add((point, new_point))
+                        actions.append((point, new_point))
                     except OutOfBoardError:
                         continue
-        actions = sorted(actions)
+        actions = list(dict.fromkeys(actions))
         print(actions)
         return actions
 
