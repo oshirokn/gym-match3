@@ -69,21 +69,39 @@ class Match3Env(gym.Env):
         for point in points:
             yield point
 
-    def __get_available_actions(self):
+        def __get_available_actions(self):
+        """ calculate available actions for current board sizes """
+        # actions = []
+        # directions = self.__get_directions(board_ndim=BOARD_NDIM)
+        # for point in self.__points_generator():
+        #     for axis_dirs in directions:
+        #         for dir_ in axis_dirs:
+        #             dir_p = Point(*dir_)
+        #             new_point = point + dir_p
+        #             try:
+        #                 _ = self.__game.board[new_point]
+        #                 if not ((point, new_point) in actions or (new_point, point) in actions):
+        #                     actions.append((point, new_point))
+        #             except OutOfBoardError:
+        #                 continue
+        # actions = list(dict.fromkeys(actions))
+        # print(actions)
         """
-        Enumerate the actions by hand (note that this wont work if we have non-allowed moves.
-        It first goes row by row (horizontal actions) and then vertical actions
+        Enumerate the actions by hand (note that this wont work if we have non-allowed moves).
+        It first goes row by row (horizontal actions) and then vertical actions.
         """
         actions = []
         rows, cols = self.__game.board.board_size
-        #horizontal
-        for j in range(cols):
-            for i in range(rows-1):
-                actions.append((Point(i,j), Point(i+1, j)))
-        #vertical
+
         for i in range(rows):
             for j in range(cols-1):
                 actions.append((Point(i,j), Point(i, j+1)))
+
+        for j in range(cols):
+            for i in range(rows-1):
+                actions.append((Point(i,j), Point(i+1, j)))
+
+
 
         return actions
 
