@@ -103,10 +103,9 @@ class Match3Env(gym.Env):
 
         possibleMoves = self.__get_possible_moves(self)
         print(possibleMoves)
-        print(actions[0]
+        print(actions[0])
         #for i in range(actions):
         #    if actions[i]
-
         return actions
 
     def __get_action(self, ind):
