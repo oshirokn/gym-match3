@@ -99,12 +99,11 @@ class Match3Env(gym.Env):
         #print(possible_moves[0][1])
         
         for i in range(len(possible_moves)):
-            actions.append((possible_moves[i][0],possible_moves[i][1]))
-        
-               
-        #print(actions[0])
-        #print(actions[0][0])
-        #print(actions[0][1])
+            actions.append((possible_moves[i][0],possible_moves[i][1]))     
+        print(actions[0])
+        print(actions[0][0])
+        print(actions[0][1])
+        print(type(actions[0][1]))
         
         #rows, cols = self.__game.board.board_size
 
