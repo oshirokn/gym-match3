@@ -95,7 +95,7 @@ class Match3Env(gym.Env):
         possible_moves = list(self.__game._Game__get_possible_moves())
         print(possible_moves[0])
 
-        for i in range(possible_moves):
+        for i in range(len(possible_moves)):
             actions.append(possible_moves[i])
         
         
