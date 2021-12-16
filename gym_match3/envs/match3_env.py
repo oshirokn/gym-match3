@@ -97,6 +97,8 @@ class Match3Env(gym.Env):
         print(possible_moves[0])
         
         for i in range(len(possible_moves)):
+            print(possible_moves[i][0])
+            print( possible_moves[i][1])
             new_point = possible_moves[i][0] + possible_moves[i][1]
             possible_moves[i][1] = new_point
 
