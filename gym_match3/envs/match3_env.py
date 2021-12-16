@@ -134,7 +134,7 @@ class Match3Env(gym.Env):
             reward = [score[0], score[1], possible_moves]
             #print("reward swap: ", reward_shape)
         except ImmovableShapeError:
-            reward = [0, 99]
+            reward = [0, 99, possible_moves]
         return reward
 
     def __get_board(self):
