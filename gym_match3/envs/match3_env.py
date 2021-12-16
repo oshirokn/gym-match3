@@ -97,7 +97,7 @@ class Match3Env(gym.Env):
         print(possible_moves[0])
         print(possible_moves[0][0])
         print(type(possible_moves[0][0]))
-        #print(possible_moves[0][1])
+        print(type(possible_moves[0][1]))
         
         actions = possible_moves
         #for i in range(len(possible_moves)):
