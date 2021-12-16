@@ -92,7 +92,7 @@ class Match3Env(gym.Env):
         """
         actions = []
         
-        possible_moves = self.__game._Game__get_possible_moves()
+        actions = self.__game._Game__get_possible_moves()
         #rows, cols = self.__game.board.board_size
 
         #for i in range(rows):
