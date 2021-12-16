@@ -100,7 +100,7 @@ class Match3Env(gym.Env):
         
 
         for i in range(len(possible_moves)):
-            actions.append((possible_moves[i][0],possible_moves[i][1])
+            actions.append((possible_moves[i][0],possible_moves[i][1]))
         print(actions)
         print(actions[0])
         print(type(actions[0][0]))
