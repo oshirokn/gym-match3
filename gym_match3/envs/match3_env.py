@@ -119,7 +119,7 @@ class Match3Env(gym.Env):
         #    for i in range(rows-1):
         #        actions.append((Point(i,j), Point(i+1, j)))
    
-        return actions
+        return possible_moves
 
     def __get_action(self, ind):
         return self.__match3_actions[ind]
