@@ -102,7 +102,7 @@ class Match3Env(gym.Env):
                 actions.append((Point(i,j), Point(i+1, j)))
     
         #print(dir(self.__game))
-        possibleMoves = self.__game.get_possible_moves()
+        possibleMoves = self.__game._Game__get_possible_moves()
         #print(possibleMoves)
         #print(actions[0])
         #for i in range(actions):
