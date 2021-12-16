@@ -96,19 +96,20 @@ class Match3Env(gym.Env):
         print(possible_moves)
         print(type('possible_moves'))
         
+        actions.append(possible_moves)
         #for i in range(possible_moves):
         #    actions.append(possible_moves[i])
         
         
-        rows, cols = self.__game.board.board_size
+        #rows, cols = self.__game.board.board_size
 
-        for i in range(rows):
-            for j in range(cols-1):
-                actions.append((Point(i,j), Point(i, j+1)))
+        #for i in range(rows):
+        #    for j in range(cols-1):
+        #        actions.append((Point(i,j), Point(i, j+1)))
 
-        for j in range(cols):
-            for i in range(rows-1):
-                actions.append((Point(i,j), Point(i+1, j)))
+        #for j in range(cols):
+        #    for i in range(rows-1):
+        #        actions.append((Point(i,j), Point(i+1, j)))
    
         return actions
 
