@@ -97,8 +97,9 @@ class Match3Env(gym.Env):
         print(possible_moves[0])
         
         for i in range(len(possible_moves)):
-            possible_moves[i][1] = possible_moves[i][0] + possible_moves[i][1]
-            
+            new_point = possible_moves[i][0] + possible_moves[i][1]
+            possible_moves[i][1] = new_point
+
         print(possible_moves)
 
         #rows, cols = self.__game.board.board_size
