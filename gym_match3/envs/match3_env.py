@@ -100,13 +100,7 @@ class Match3Env(gym.Env):
         for j in range(cols):
             for i in range(rows-1):
                 actions.append((Point(i,j), Point(i+1, j)))
-    
-        #print(dir(self.__game))
-        possibleMoves = self.__game._Game__get_possible_moves()
-        #print(possibleMoves)
-        #print(actions[0])
-        #for i in range(actions):
-        #    if actions[i]
+   
         return actions
 
     def __get_action(self, ind):
@@ -136,7 +130,7 @@ class Match3Env(gym.Env):
     def __swap(self, point1, point2):
         try:
             score =  self.__game.swap(self.__game.board, point1, point2)
-            possible_moves = self.__game.__get_possible_moves(self.__game)
+            possible_moves = self.__game._Game__get_possible_moves()
             #reward = [score[0], score[1], possible_moves]
             reward = [score[0], score[1]]
             #print("reward swap: ", reward_shape)
