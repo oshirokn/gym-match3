@@ -41,6 +41,12 @@ class Point(AbstractPoint):
 
     def get_coord(self):
         return self.__row, self.__col
+    
+    def set_coord_row(self, row):
+        self.__row = row
+
+    def set_coord_col(self, col):
+        self.__col = col
 
     def __add__(self, other):
         row1, col1 = self.get_coord()
