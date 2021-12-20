@@ -663,7 +663,18 @@ class Game(AbstractGame):
             self.__scan_del_mvnans_fill_until()
             possible_moves = self.__get_possible_moves()
         return self
+    
+    def get_legal_moves(self):
+        legal_moves = self.__get_possible_moves()
 
+        for i in range(len(possible_moves)):
+            legal_moves[i] = list(legal_moves[i])
+            legal_moves[i][0].set_coord_row(self.rows - possible_moves[i][0].get_coord()[0])
+            legal_moves[i][0].set_coord_col(possible_moves[i][0].get_coord()[1])
+            legal_moves[i][1] = Point(legal_moves[i][0].get_coord()[0] - possible_moves[i][1][0], possible_moves[i][1][1])
+            print(legal_moves[i])
+        
+        return legal_moves
 
 class RandomGame(Game):
 
