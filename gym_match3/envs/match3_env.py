@@ -139,7 +139,7 @@ class Match3Env(gym.Env):
 
         return reward
     
-    def get_legal_actions(self):
+    def __get_legal_actions(self):
         # Return a list of boolean corresponding to the legal actions
         
         legal_moves = self.__game._Game__get_possible_moves()
