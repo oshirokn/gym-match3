@@ -91,30 +91,18 @@ class Match3Env(gym.Env):
         It first goes row by row (horizontal actions) and then vertical actions.
         """
         actions = []
-        
-        possible_moves = list(self.__game._Game__get_possible_moves())
-        print(possible_moves)
-        print(possible_moves[0])
-        
-        for i in range(len(possible_moves)):
-            print(possible_moves[i][0])
-            print( possible_moves[i][1])
-            new_point = possible_moves[i][0] + possible_moves[i][1]
-            possible_moves[i][1] = new_point
 
-        print(possible_moves)
+        rows, cols = self.__game.board.board_size
 
-        #rows, cols = self.__game.board.board_size
+        for i in range(rows):
+            for j in range(cols-1):
+                actions.append((Point(i,j), Point(i, j+1)))
 
-        #for i in range(rows):
-        #    for j in range(cols-1):
-        #        actions.append((Point(i,j), Point(i, j+1)))
-
-        #for j in range(cols):
-        #    for i in range(rows-1):
-        #        actions.append((Point(i,j), Point(i+1, j)))
+        for j in range(cols):
+            for i in range(rows-1):
+                actions.append((Point(i,j), Point(i+1, j)))
    
-        return possible_moves
+        return actions
 
     def __get_action(self, ind):
         return self.__match3_actions[ind]
