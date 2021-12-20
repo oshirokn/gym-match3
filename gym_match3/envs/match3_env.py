@@ -138,6 +138,34 @@ class Match3Env(gym.Env):
             reward = [0, 99, possible_moves]
 
         return reward
+    
+    def get_legal_actions(self):
+        # Return a list of boolean corresponding to the legal actions
+        
+        legal_moves = self.__game._Game__get_possible_moves()
+        
+        # Formatting possible moves correctly
+        for i in range(len(possible_moves)):
+            print(i)
+            print(self.rows - possible_moves[i][0].get_coord()[0])
+            legal_moves[i] = list(legal_moves[i])
+            legal_moves[i][0].set_coord_row(self.rows - possible_moves[i][0].get_coord()[0])
+            legal_moves[i][0].set_coord_col(possible_moves[i][0].get_coord()[1])
+            legal_moves[i][1] = Point(legal_moves[i][0].get_coord()[0] - possible_moves[i][1][0], possible_moves[i][1][1])
+            print(legal_moves[i])
+
+        # Get actions and compare to possible moves
+        legal_moves_bool = []
+        available_actions = self.__get_available_actions()
+
+        for i in range(len(possible_moves)):
+            if(legal_moves[i] == available_actions[i]):
+                legal_moves_bool.append(True)
+            else:
+                legal_moves_bool.append(False)
+
+        print(legal_moves_bool)
+        return legal_moves_bool
 
     def __get_board(self):
         return self.__game.board.board.copy()
