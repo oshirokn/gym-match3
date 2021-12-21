@@ -143,7 +143,7 @@ class Match3Env(gym.Env):
         # Return a list of boolean corresponding to the legal actions
         
         print(dir(Game))
-        legal_moves = Game.__get_possible_moves()
+        legal_moves = self.__game._Game__get_possible_moves()
         
         # Formatting possible moves correctly
         for i in range(len(possible_moves)):
